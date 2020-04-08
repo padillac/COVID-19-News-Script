@@ -1,18 +1,21 @@
 ### This program compiles global information about the Coronavirus pandemic and sends an email update to subscribers
 
 ## IMPORTS
-import subprocess
 import sys
 import os
+import subprocess
+
 from urllib.request import urlopen, Request
-from urllib import parse
+from selenium import webdriver
+
 import smtplib
 import ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+
 from datetime import datetime, date
 import time
-from selenium import webdriver
+
 import re
 from base64 import b64decode
 
@@ -43,7 +46,7 @@ def scrape_google():
     textOutput += "\n\nView Google's Global COVID-19 Map:\nhttps://google.com/covid19-map/?hl=en\n"
 
     # Global Stats from Google
-    htmlOutput += "<h3>Global Statistics from Google</h3><br>"
+    htmlOutput += "<h3>Global Statistics from Google</h3>"
     textOutput += "\nGlobal Statistics from Google\nhttps://google.com/covid19-map/?hl=en"
 
     url = "https://google.com/covid19-map/?hl=en"
@@ -144,7 +147,7 @@ def scrape_xinhua():
     driver = webdriver.Chrome()
     driver.get(url)
 
-    time.sleep(.6)
+    time.sleep(.8)
 
     top3stories = driver.find_elements_by_class_name("news")[:3]
 
@@ -175,10 +178,7 @@ def compile_message():
     startTime = time.time()
 
     html = plaintext = ""
-
-    html += """\
-        <html>
-        """
+    html += "<html>"
 
     htmlAdd, plaintextAdd = scrape_google()
     html += htmlAdd
@@ -267,6 +267,7 @@ def compile_and_send():
 
 
 
+
 def main():
     print("Starting COVID-19 News Script\n")
 
@@ -276,8 +277,6 @@ def main():
             compile_and_send()
         time.sleep(3600)
     
-
-
 
 if __name__ == "__main__":
     main()
