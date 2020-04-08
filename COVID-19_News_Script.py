@@ -259,18 +259,23 @@ def send_update(update, plaintext):
 
 
     
-    
+def compile_and_send():
+    print("[{0}] Starting Scheduled Run --".format(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+    message, plaintext = compile_message()
+    send_update(message, plaintext)
+    print()
 
 
 
 def main():
-    print("Starting COVID-19 Updater\n")
+    print("Starting COVID-19 News Script\n")
 
-    # Implement daily loop
-
-    message, plaintext = compile_message()
-
-    send_update(message, plaintext)
+    # Daily loop
+    while True:
+        if datetime.now().strftime("%H") == "12":
+            compile_and_send()
+        time.sleep(3600)
+    
 
 
 
