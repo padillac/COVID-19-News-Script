@@ -7,3 +7,5 @@
 ## Setup
 
 * Remember to create a "subscribers.txt" file in the same directory as the main script and fill it with subscriber email addresses
+
+* Also create an "old-updates" folder to store records of html and txt files created
