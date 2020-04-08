@@ -230,7 +230,7 @@ def send_update(update, plaintext):
         print("-- HTML Message:", hname)
     tname = "old-updates/{0}-Update.txt".format(date.today())
     with open(tname, "w") as f:
-        f.write(update)
+        f.write(plaintext)
         print("-- Text Message:", tname)
     ##
 
