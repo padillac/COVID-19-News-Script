@@ -274,7 +274,7 @@ def main():
     print("Starting COVID-19 News Script\n")
 
     # One run immediately
-    compile_and_send()
+    #compile_and_send()
 
     # Daily loop
     while True:
