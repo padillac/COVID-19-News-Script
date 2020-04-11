@@ -53,7 +53,7 @@ def scrape_google():
     driver = webdriver.Chrome()
     driver.get(url)
 
-    statselement = driver.find_elements_by_class_name("VOxXkf")[1]
+    statselement = driver.find_elements_by_class_name("eWp4nd")[0]
     statshtml = statselement.get_attribute("outerHTML")
     htmlOutput += "<br><div style='width:650px;height:300px;overflow:auto;'>" + statshtml + "</div><br>"
 
@@ -147,7 +147,7 @@ def scrape_xinhua():
     driver = webdriver.Chrome()
     driver.get(url)
 
-    time.sleep(.8)
+    time.sleep(1)
 
     top3stories = driver.find_elements_by_class_name("news")[:3]
 
@@ -270,6 +270,9 @@ def compile_and_send():
 
 def main():
     print("Starting COVID-19 News Script\n")
+
+    # One run immediately
+    compile_and_send()
 
     # Daily loop
     while True:
