@@ -5,6 +5,8 @@ import sys
 import os
 import subprocess
 
+from tqdm import tqdm
+
 from urllib.request import urlopen, Request
 from selenium import webdriver
 
@@ -250,7 +252,7 @@ def send_update(update, plaintext):
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(sender_email, email_password)
         #loop over recipients
-        for receiver in recipients:
+        for receiver in tqdm(recipients):
             message["To"] = receiver
             server.sendmail(sender_email, receiver, message.as_string())
 
