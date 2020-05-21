@@ -1,14 +1,9 @@
 ### This program compiles global information about the Coronavirus pandemic and sends an email update to subscribers
 
 ## IMPORTS
-import sys
-import os
-import subprocess
+from selenium import webdriver
 
 from tqdm import tqdm
-
-from urllib.request import urlopen, Request
-from selenium import webdriver
 
 import smtplib
 import ssl
@@ -19,7 +14,6 @@ from datetime import datetime, date
 import time
 
 import re
-from base64 import b64decode
 
 
 
